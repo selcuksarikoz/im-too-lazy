@@ -4,9 +4,11 @@
 [![Open VSX](https://img.shields.io/open-vsx/v/selcuksarikoz/im-too-lazy?label=Open%20VSX)](https://open-vsx.org/extension/selcuksarikoz/im-too-lazy)
 [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-ffdd00?logo=buymeacoffee&logoColor=000)](https://buymeacoffee.com/funnyturkishdude)
 
-VS Code extension for fast JSON/Go/TypeScript/Rust/Python workflows.
+`I'm Too Lazy` is a VS Code productivity extension that turns JSON samples into ready-to-use code and automates repetitive model/tag/property tasks in Go, TypeScript, Rust, and Python.
 
-You can enable or disable supported languages from Settings (`imTooLazy.languages.*`), and disabled languages are hidden from menus and CodeLens actions.
+It is designed for day-to-day backend/frontend workflows where you frequently copy JSON from APIs and need quick model generation, schema conversion, struct tags, or class properties without manual boilerplate.
+
+You can enable or disable supported languages from Settings (`imTooLazy.languages.*`); disabled languages are hidden from menus and CodeLens actions.
 
 ## Features
 
