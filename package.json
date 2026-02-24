@@ -1,0 +1,482 @@
+{
+  "name": "im-too-lazy",
+  "publisher": "selcuksarikoz",
+  "displayName": "I'm Too Lazy",
+  "description": "VS Code JSON converter for Go, TypeScript, Rust, and Python with selection-aware fragments, TypeScript Zod/Prisma/Drizzle generation, Go struct tag automation, Python property getter/setter generation, and workspace setup tools (.editorconfig, .prettierrc, uv init + venv).",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Selcuk Sarikoz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/selcuksarikoz/im-too-lazy.git"
+  },
+  "homepage": "https://github.com/selcuksarikoz/im-too-lazy#readme",
+  "funding": "https://buymeacoffee.com/funnyturkishdude",
+  "bugs": {
+    "url": "https://github.com/selcuksarikoz/im-too-lazy/issues"
+  },
+  "keywords": [
+    "vscode",
+    "extension",
+    "json to go",
+    "json to typescript",
+    "json to prisma",
+    "json to drizzle",
+    "go struct tags",
+    "gorm",
+    "xorm",
+    "bson",
+    "prettier",
+    "editorconfig",
+    "python",
+    "pydantic",
+    "dataclass",
+    "typeddict",
+    "uv",
+    "venv",
+    "zod",
+    "validate",
+    "required",
+    "rust",
+    "prisma",
+    "drizzle",
+    "orm"
+  ],
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other",
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:rust",
+    "onLanguage:json",
+    "onLanguage:jsonc",
+    "onLanguage:go",
+    "onLanguage:python",
+    "onCommand:im-too-lazy.jsonConvertMenu",
+    "onCommand:im-too-lazy.jsonToGo",
+    "onCommand:im-too-lazy.jsonToTypeScript",
+    "onCommand:im-too-lazy.jsonToTypeScriptZod",
+    "onCommand:im-too-lazy.jsonToRust",
+    "onCommand:im-too-lazy.jsonToPythonPydantic",
+    "onCommand:im-too-lazy.jsonToPythonDataclass",
+    "onCommand:im-too-lazy.jsonToPythonTypedDict",
+    "onCommand:im-too-lazy.goTagMenuCurrent",
+    "onCommand:im-too-lazy.goTagMenuAll",
+    "onCommand:im-too-lazy.goTagCurrentJsonBson",
+    "onCommand:im-too-lazy.goTagCurrentAll",
+    "onCommand:im-too-lazy.goTagAllJsonBson",
+    "onCommand:im-too-lazy.goTagAllAll",
+    "onCommand:im-too-lazy.pythonPropsMenuCurrent",
+    "onCommand:im-too-lazy.pythonPropsMenuClass",
+    "onCommand:im-too-lazy.pythonPropsMenuAll",
+    "onCommand:im-too-lazy.createEditorConfig",
+    "onCommand:im-too-lazy.createPrettierConfig",
+    "onCommand:im-too-lazy.createFormattingFiles",
+    "onCommand:im-too-lazy.uvInitPythonProject",
+    "onCommand:im-too-lazy.configurePythonVenvSettings",
+    "onCommand:im-too-lazy.setupPythonWithUv",
+    "onCommand:im-too-lazy.quickActionsMenu",
+    "onCommand:im-too-lazy.pasteToMenu"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "im-too-lazy.quickActionsMenu",
+        "title": "Quick Actions",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.pasteToMenu",
+        "title": "Paste To...",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.jsonConvertMenu",
+        "title": "Convert...",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.jsonToGo",
+        "title": "Convert to Go",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.jsonToTypeScript",
+        "title": "Convert to TypeScript",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.jsonToTypeScriptZod",
+        "title": "Convert to TypeScript (Zod)",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.jsonToRust",
+        "title": "Convert to Rust",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.jsonToPythonPydantic",
+        "title": "Convert to Python (Pydantic)",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.jsonToPythonDataclass",
+        "title": "Convert to Python (dataclass)",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.jsonToPythonTypedDict",
+        "title": "Convert to Python (TypedDict)",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.goTagMenuCurrent",
+        "title": "Convert to Tags (Current Struct)...",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.goTagMenuAll",
+        "title": "Convert to Tags (All Structs)...",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.goTagCurrentJsonBson",
+        "title": "Convert to json+bson Tags (Current Struct)",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.goTagCurrentAll",
+        "title": "Convert to All Tags (Current Struct)",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.goTagAllJsonBson",
+        "title": "Convert to json+bson Tags (All Structs)",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.goTagAllAll",
+        "title": "Convert to All Tags (All Structs)",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.pythonPropsMenuCurrent",
+        "title": "Add Property (Current Property)...",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.pythonPropsMenuClass",
+        "title": "Add Properties (Current Class)...",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.pythonPropsMenuAll",
+        "title": "Add Properties (All Classes)...",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.createEditorConfig",
+        "title": "Create .editorconfig",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.createPrettierConfig",
+        "title": "Create .prettierrc",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.createFormattingFiles",
+        "title": "Create .editorconfig + .prettierrc",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.uvInitPythonProject",
+        "title": "UV Init Python Project",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.configurePythonVenvSettings",
+        "title": "Configure VS Code Python Venv",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.setupPythonWithUv",
+        "title": "UV Init + Configure Python Venv",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "im-too-lazy.jsonConvertMenu",
+          "when": "(editorLangId == json || editorLangId == jsonc) && config.imTooLazy.languages.json",
+          "group": "navigation"
+        },
+        {
+          "command": "im-too-lazy.goTagMenuCurrent",
+          "when": "editorLangId == go && config.imTooLazy.languages.go",
+          "group": "navigation"
+        },
+        {
+          "command": "im-too-lazy.pythonPropsMenuCurrent",
+          "when": "editorLangId == python && config.imTooLazy.languages.python",
+          "group": "navigation"
+        },
+        {
+          "command": "im-too-lazy.pythonPropsMenuClass",
+          "when": "editorLangId == python && config.imTooLazy.languages.python",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "submenu": "im-too-lazy.explorerMenu",
+          "group": "navigation@40"
+        }
+      ],
+      "im-too-lazy.explorerMenu": [
+        {
+          "command": "im-too-lazy.createFormattingFiles",
+          "group": "1_setup@1"
+        },
+        {
+          "command": "im-too-lazy.createEditorConfig",
+          "group": "1_setup@2"
+        },
+        {
+          "command": "im-too-lazy.createPrettierConfig",
+          "group": "1_setup@3"
+        },
+        {
+          "command": "im-too-lazy.setupPythonWithUv",
+          "group": "2_python@1"
+        },
+        {
+          "command": "im-too-lazy.uvInitPythonProject",
+          "group": "2_python@2"
+        },
+        {
+          "command": "im-too-lazy.configurePythonVenvSettings",
+          "group": "2_python@3"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "im-too-lazy.quickActionsMenu",
+          "when": "config.imTooLazy.languages.json || config.imTooLazy.languages.go || config.imTooLazy.languages.python || config.imTooLazy.languages.typescript || config.imTooLazy.languages.rust"
+        },
+        {
+          "command": "im-too-lazy.jsonConvertMenu",
+          "when": "config.imTooLazy.languages.json"
+        },
+        {
+          "command": "im-too-lazy.pasteToMenu",
+          "when": "config.imTooLazy.languages.json && (config.imTooLazy.languages.go || config.imTooLazy.languages.typescript || config.imTooLazy.languages.rust || config.imTooLazy.languages.python)"
+        },
+        {
+          "command": "im-too-lazy.goTagMenuCurrent",
+          "when": "config.imTooLazy.languages.go"
+        },
+        {
+          "command": "im-too-lazy.goTagMenuAll",
+          "when": "config.imTooLazy.languages.go"
+        },
+        {
+          "command": "im-too-lazy.pythonPropsMenuCurrent",
+          "when": "config.imTooLazy.languages.python"
+        },
+        {
+          "command": "im-too-lazy.pythonPropsMenuClass",
+          "when": "config.imTooLazy.languages.python"
+        },
+        {
+          "command": "im-too-lazy.pythonPropsMenuAll",
+          "when": "config.imTooLazy.languages.python"
+        },
+        {
+          "command": "im-too-lazy.createEditorConfig"
+        },
+        {
+          "command": "im-too-lazy.createPrettierConfig"
+        },
+        {
+          "command": "im-too-lazy.createFormattingFiles"
+        },
+        {
+          "command": "im-too-lazy.uvInitPythonProject"
+        },
+        {
+          "command": "im-too-lazy.configurePythonVenvSettings"
+        },
+        {
+          "command": "im-too-lazy.setupPythonWithUv"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "im-too-lazy.explorerMenu",
+        "label": "I'm Too Lazy"
+      }
+    ],
+    "configuration": {
+      "title": "I'm Too Lazy",
+      "properties": {
+        "imTooLazy.languages.json": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable JSON/JSONC conversion features."
+        },
+        "imTooLazy.languages.go": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable Go struct tag generation features."
+        },
+        "imTooLazy.languages.python": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable Python property/accessor generation features."
+        },
+        "imTooLazy.languages.typescript": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable TypeScript/Zod conversion targets and TypeScript quick actions."
+        },
+        "imTooLazy.languages.rust": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable Rust conversion targets and Rust quick actions."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && vite build",
+    "watch": "vite build --watch",
+    "package": "npm run check-types && vite build",
+    "pretest": "npm run compile && npm run test:smoke",
+    "test:smoke": "vitest run src/test/smoke.test.ts",
+    "check-types": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "vsix": "vsce package",
+    "release": "npm run compile && npm run vsix -- --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "22.x",
+    "@types/vscode": "^1.109.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.7.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18"
+  },
+  "icon": "icons/icon.png"
+}

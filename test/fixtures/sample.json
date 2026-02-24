@@ -1,0 +1,35 @@
+{
+  "name": "Selcuk",
+  "age": 31,
+  "isActive": true,
+  "roles": ["admin", "editor", "maintainer"],
+  "email": "selcuk@example.com",
+  "tags": ["vscode", "go", "python"],
+  "profile": {
+    "createdAt": "2026-02-24",
+    "score": 98.5,
+    "timezone": "Europe/Istanbul",
+    "settings": {
+      "theme": "dark",
+      "notifications": true
+    }
+  },
+  "addresses": [
+    {
+      "type": "home",
+      "city": "Istanbul",
+      "zip": "34000"
+    },
+    {
+      "type": "office",
+      "city": "Ankara",
+      "zip": "06000"
+    }
+  ],
+  "metadata": {
+    "source": "fixture",
+    "version": 2,
+    "deprecated": false
+  },
+  "lastLogin": null
+}
