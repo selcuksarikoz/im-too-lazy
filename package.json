@@ -1,9 +1,9 @@
 {
   "name": "im-too-lazy",
   "publisher": "selcuksarikoz",
-  "displayName": "I'm Too Lazy",
+  "displayName": "ImTooLazy - JSON Converter",
   "description": "VS Code JSON converter for Go, TypeScript, Rust, and Python with selection-aware fragments, TypeScript Zod/Prisma/Drizzle generation, Go struct tag automation, Python property getter/setter generation, and workspace setup tools (.editorconfig, .prettierrc, uv init + venv).",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "Selcuk Sarikoz",
   "repository": {
