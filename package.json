@@ -368,11 +368,39 @@
       "commandPalette": [
         {
           "command": "im-too-lazy.quickActionsMenu",
-          "when": "config.imTooLazy.languages.json || config.imTooLazy.languages.go || config.imTooLazy.languages.python || config.imTooLazy.languages.typescript || config.imTooLazy.languages.rust"
+          "when": "!editorLangId || (editorLangId != json && editorLangId != jsonc) && (config.imTooLazy.languages.go || config.imTooLazy.languages.python || config.imTooLazy.languages.typescript || config.imTooLazy.languages.rust)"
         },
         {
           "command": "im-too-lazy.jsonConvertMenu",
-          "when": "config.imTooLazy.languages.json"
+          "when": "config.imTooLazy.languages.json && (editorLangId == json || editorLangId == jsonc)"
+        },
+        {
+          "command": "im-too-lazy.jsonToGo",
+          "when": "config.imTooLazy.languages.json && config.imTooLazy.languages.go && (editorLangId == json || editorLangId == jsonc)"
+        },
+        {
+          "command": "im-too-lazy.jsonToTypeScript",
+          "when": "config.imTooLazy.languages.json && config.imTooLazy.languages.typescript && (editorLangId == json || editorLangId == jsonc)"
+        },
+        {
+          "command": "im-too-lazy.jsonToTypeScriptZod",
+          "when": "config.imTooLazy.languages.json && config.imTooLazy.languages.typescript && (editorLangId == json || editorLangId == jsonc)"
+        },
+        {
+          "command": "im-too-lazy.jsonToRust",
+          "when": "config.imTooLazy.languages.json && config.imTooLazy.languages.rust && (editorLangId == json || editorLangId == jsonc)"
+        },
+        {
+          "command": "im-too-lazy.jsonToPythonPydantic",
+          "when": "config.imTooLazy.languages.json && config.imTooLazy.languages.python && (editorLangId == json || editorLangId == jsonc)"
+        },
+        {
+          "command": "im-too-lazy.jsonToPythonDataclass",
+          "when": "config.imTooLazy.languages.json && config.imTooLazy.languages.python && (editorLangId == json || editorLangId == jsonc)"
+        },
+        {
+          "command": "im-too-lazy.jsonToPythonTypedDict",
+          "when": "config.imTooLazy.languages.json && config.imTooLazy.languages.python && (editorLangId == json || editorLangId == jsonc)"
         },
         {
           "command": "im-too-lazy.pasteToMenu",
