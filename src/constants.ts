@@ -9,6 +9,7 @@ export const COMMANDS = {
   jsonToPythonPydantic: 'im-too-lazy.jsonToPythonPydantic',
   jsonToPythonDataclass: 'im-too-lazy.jsonToPythonDataclass',
   jsonToPythonTypedDict: 'im-too-lazy.jsonToPythonTypedDict',
+  jsonToPythonSchema: 'im-too-lazy.jsonToPythonSchema',
   goTagMenuCurrent: 'im-too-lazy.goTagMenuCurrent',
   goTagMenuAll: 'im-too-lazy.goTagMenuAll',
   goTagCurrentJsonBson: 'im-too-lazy.goTagCurrentJsonBson',

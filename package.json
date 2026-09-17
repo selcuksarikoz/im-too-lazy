@@ -2,8 +2,8 @@
   "name": "im-too-lazy",
   "publisher": "selcuksarikoz",
   "displayName": "JSON Converter - json2Any",
-  "description": "VS Code JSON converter for Go, TypeScript, Rust, and Python with selection-aware fragments, TypeScript Zod/Prisma/Drizzle generation, Go struct tag automation, Python property getter/setter generation, and workspace setup tools (.editorconfig, .prettierrc, uv init + venv).",
-  "version": "0.1.3",
+  "description": "VS Code JSON converter for Go, TypeScript, Rust, and Python with selection-aware fragments, TypeScript Zod/Prisma/Drizzle generation, Go struct tag automation, Python property getter/setter generation, marshmallow Schema generation, and workspace setup tools (.editorconfig, .prettierrc, uv init + venv).",
+  "version": "0.2.0",
   "license": "MIT",
   "author": "Selcuk Sarikoz",
   "repository": {
@@ -32,6 +32,8 @@
     "pydantic",
     "dataclass",
     "typeddict",
+    "schema",
+    "marshmallow",
     "uv",
     "venv",
     "zod",
@@ -43,7 +45,7 @@
     "orm"
   ],
   "engines": {
-    "vscode": "^1.107.0"
+    "vscode": "^1.138.0"
   },
   "categories": [
     "Other",
@@ -63,6 +65,7 @@
     "onCommand:im-too-lazy.jsonToPythonPydantic",
     "onCommand:im-too-lazy.jsonToPythonDataclass",
     "onCommand:im-too-lazy.jsonToPythonTypedDict",
+    "onCommand:im-too-lazy.jsonToPythonSchema",
     "onCommand:im-too-lazy.goTagMenuCurrent",
     "onCommand:im-too-lazy.goTagMenuAll",
     "onCommand:im-too-lazy.goTagCurrentJsonBson",
@@ -168,6 +171,15 @@
       {
         "command": "im-too-lazy.jsonToPythonTypedDict",
         "title": "Convert to Python (TypedDict)",
+        "category": "I'm Too Lazy",
+        "icon": {
+          "light": "icons/icon.svg",
+          "dark": "icons/icon.svg"
+        }
+      },
+      {
+        "command": "im-too-lazy.jsonToPythonSchema",
+        "title": "Convert to Python (Schema)",
         "category": "I'm Too Lazy",
         "icon": {
           "light": "icons/icon.svg",
@@ -403,6 +415,10 @@
           "when": "config.imTooLazy.languages.json && config.imTooLazy.languages.python && (editorLangId == json || editorLangId == jsonc)"
         },
         {
+          "command": "im-too-lazy.jsonToPythonSchema",
+          "when": "config.imTooLazy.languages.json && config.imTooLazy.languages.python && (editorLangId == json || editorLangId == jsonc)"
+        },
+        {
           "command": "im-too-lazy.pasteToMenu",
           "when": "config.imTooLazy.languages.json && (config.imTooLazy.languages.go || config.imTooLazy.languages.typescript || config.imTooLazy.languages.rust || config.imTooLazy.languages.python)"
         },
@@ -498,13 +514,13 @@
   },
   "devDependencies": {
     "@types/node": "22.x",
-    "@types/vscode": "^1.107.0",
+    "@types/vscode": "^1.138.0",
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
-    "@vscode/vsce": "^3.7.1",
+    "@vscode/vsce": "^3.9.2",
     "typescript": "^5.9.3",
-    "vite": "^7.3.1",
-    "vitest": "^4.0.18"
+    "vite": "^7.3.6",
+    "vitest": "^4.1.11"
   },
   "icon": "icons/icon.png"
 }

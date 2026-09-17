@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import { COMMANDS, GO_TAGS } from '../constants';
 import { jsonToGo } from '../converters/jsonToGo';
 import { jsonToDrizzle } from '../converters/jsonToDrizzle';
-import { jsonToPythonDataclass, jsonToPythonPydantic, jsonToPythonTypedDict } from '../converters/jsonToPython';
+import { jsonToPythonDataclass, jsonToPythonPydantic, jsonToPythonSchema, jsonToPythonTypedDict } from '../converters/jsonToPython';
 import { jsonToPrisma } from '../converters/jsonToPrisma';
 import { jsonToRust } from '../converters/jsonToRust';
 import { JsonValue, normalizeJsonInput } from '../converters/shared';
@@ -21,7 +21,8 @@ type ConvertTarget =
   | 'rust'
   | 'python-pydantic'
   | 'python-dataclass'
-  | 'python-typeddict';
+  | 'python-typeddict'
+  | 'python-schema';
 
 interface ConvertChoice {
   label: string;
@@ -94,7 +95,8 @@ function getConvertChoices(): ConvertChoice[] {
     choices.push(
       { label: 'Convert to Python (Pydantic)', target: 'python-pydantic' },
       { label: 'Convert to Python (dataclass)', target: 'python-dataclass' },
-      { label: 'Convert to Python (TypedDict)', target: 'python-typeddict' }
+      { label: 'Convert to Python (TypedDict)', target: 'python-typeddict' },
+      { label: 'Convert to Python (Schema)', target: 'python-schema' }
     );
   }
 
@@ -136,7 +138,11 @@ function convertJsonValue(parsed: JsonValue, choice: ConvertChoice): { content: 
     return { content: jsonToPythonDataclass(parsed, 'Root'), language: 'python' };
   }
 
-  return { content: jsonToPythonTypedDict(parsed, 'Root'), language: 'python' };
+  if (choice.target === 'python-typeddict') {
+    return { content: jsonToPythonTypedDict(parsed, 'Root'), language: 'python' };
+  }
+
+  return { content: jsonToPythonSchema(parsed, 'Root'), language: 'python' };
 }
 
 async function maybeSetEditorLanguage(editor: vscode.TextEditor, language: string): Promise<void> {
@@ -383,6 +389,26 @@ export function registerJsonCommands(context: vscode.ExtensionContext): void {
       try {
         const parsed = parseJsonFromEditorFlexible(editor);
         const converted = convertJsonValue(parsed, { label: 'Convert to Python (TypedDict)', target: 'python-typeddict' });
+        await openVirtualDocument(converted.content, converted.language);
+      } catch (error) {
+        void vscode.window.showErrorMessage(`Invalid JSON: ${(error as Error).message}`);
+      }
+    }),
+    vscode.commands.registerCommand(COMMANDS.jsonToPythonSchema, async () => {
+      if (!isLanguageEnabled('json') || !isLanguageEnabled('python')) {
+        void vscode.window.showInformationMessage('JSON or Python features are disabled in settings.');
+        return;
+      }
+
+      const editor = getActiveEditor();
+      if (!editor) {
+        void vscode.window.showErrorMessage('Open a JSON editor first.');
+        return;
+      }
+
+      try {
+        const parsed = parseJsonFromEditorFlexible(editor);
+        const converted = convertJsonValue(parsed, { label: 'Convert to Python (Schema)', target: 'python-schema' });
         await openVirtualDocument(converted.content, converted.language);
       } catch (error) {
         void vscode.window.showErrorMessage(`Invalid JSON: ${(error as Error).message}`);
